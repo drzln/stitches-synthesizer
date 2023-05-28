@@ -9,3 +9,6 @@ vendor
 
 # ignore built gems
 pkg
+
+# remove .envrc
+.envrc
