@@ -1,9 +1,7 @@
-# frozen_string_literal: true
-
-require_relative %(../errors/invalid_synthesizer_key_error)
-require_relative %(../errors/too_many_field_values)
-require_relative %(../errors/not_enough_resource_keys)
-require_relative %(../primitives/bury)
+require_relative %(./abstract-synthesizer/errors/invalid_synthesizer_key_error)
+require_relative %(./abstract-synthesizer/errors/too_many_field_values)
+require_relative %(./abstract-synthesizer/errors/not_enough_resource_keys)
+require_relative %(./abstract-synthesizer/primitives/bury)
 
 class AbstractSynthesizer
   include Bury
@@ -99,6 +97,23 @@ class AbstractSynthesizer
       yield if block_given?
       translation[:ancestors] = []
       translation[:context] = nil
+    end
+  end
+end
+
+module SynthesizerFactory
+  class << self
+    def create_synthesizer(name:, keys:)
+      synth = AbstractSynthesizer.new(name: name)
+      synth.define_singleton_method(:method_missing) do |method_name, *args, &block|
+        abstract_method_missing(
+          method_name,
+          keys,
+          *args,
+          &block
+        )
+      end
+      synth
     end
   end
 end

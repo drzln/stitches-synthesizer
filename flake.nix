@@ -7,7 +7,7 @@
   outputs = { ruby-flake-utils, nixpkgs, ... }:
     ruby-flake-utils.lib.mkGemSystems {
       inherit nixpkgs;
-      name = "stitches-synthesizer";
+      name = "abstract-synthesizer";
       lockfile = ./Gemfile.lock;
       gemfile = ./Gemfile;
       gemset = ./gemset.nix;

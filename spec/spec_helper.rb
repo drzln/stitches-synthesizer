@@ -1,4 +1,4 @@
-require %(stitches/synthesizer/abstract)
+require %(abstract-synthesizer)
 
 class RandoSynthesizer < AbstractSynthesizer
   def method_missing(method_name, *args, &block)

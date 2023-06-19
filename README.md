@@ -1,2 +1,1 @@
-# stitches-synthesizer
-A Ruby synthesizer
+# abstract-synthesizer

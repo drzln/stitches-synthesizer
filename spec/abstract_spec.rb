@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require_relative %(./spec_helper)
-require %(stitches/errors/invalid_synthesizer_key_error)
-require %(stitches/errors/too_many_field_values)
+require %(abstract-synthesizer/errors/invalid_synthesizer_key_error)
+require %(abstract-synthesizer/errors/too_many_field_values)
 
 describe RandoSynthesizer do
   context %(main) do
